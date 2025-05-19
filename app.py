@@ -12,6 +12,10 @@ import os
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return {"status": "healthy", "message": "CoverGenie API is running"}
+
 @app.post("/generate")
 async def generate(request: Request):
     try:
