@@ -1,5 +1,8 @@
 import requests
 import time
+import os
+
+OLLAMA_URL = os.getenv('OLLAMA_URL', 'http://localhost:11434')
 
 def generate_cover_letter(prompt: str) -> str:
     max_retries = 3
@@ -8,7 +11,7 @@ def generate_cover_letter(prompt: str) -> str:
     for attempt in range(max_retries):
         try:
             response = requests.post(
-                "http://localhost:11434/api/generate",
+                f"{OLLAMA_URL}/api/generate",
                 json={
                     "model": "mistral",
                     "prompt": prompt,
