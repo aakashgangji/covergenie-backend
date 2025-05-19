@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, FileResponse
-from backend.utils.parser import clean_text
-from backend.utils.prompt_builder import build_prompt
-from backend.utils.ollama import generate_cover_letter
+from utils.parser import clean_text
+from utils.prompt_builder import build_prompt
+from utils.ollama import generate_cover_letter
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
@@ -71,4 +71,4 @@ async def download_docx(request: Request):
         return JSONResponse({
             "success": False,
             "error": str(e)
-        })
+        }) 
